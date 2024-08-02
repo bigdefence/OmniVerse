@@ -391,7 +391,7 @@ def main():
 
     # Sidebar content
     with st.sidebar:
-        st.sidebar.markdown('<p class="sidebar-title">😘 Suno Cookie 설정</p>', unsafe_allow_html=True)
+        st.sidebar.markdown('<p class="sidebar-subtitle">😘 Suno Cookie 설정</p>', unsafe_allow_html=True)
         suno_tab = st.radio("탭 선택", ["Suno Cookie 입력", "Suno Cookie 얻는 방법"])
 
         if suno_tab == "Suno Cookie 입력":
@@ -403,7 +403,7 @@ def main():
             st.markdown("[Cookie 얻는 방법](https://github.com/bigdefence/Music-Face)")
             st.markdown("[Suno 웹사이트로 이동하기](https://suno.com/)")
 
-        st.sidebar.markdown('<p class="sidebar-title">😎 개발자 정보</p>', unsafe_allow_html=True)
+        st.sidebar.markdown('<p class="sidebar-subtitle">😎 개발자 정보</p>', unsafe_allow_html=True)
         st.markdown("""
         - **개발자**: 정강빈
         - **버전**: 2.3.0
