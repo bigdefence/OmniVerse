@@ -5,3 +5,4 @@ torchvision
 SunoAI
 transformers
 google.generativeai
+opencv
