@@ -139,7 +139,7 @@ lottie_json = load_lottie_url(lottie_url)
 st.markdown("""
 <style>
     [data-testid=stSidebar] {
-        background-image: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,255,171,1) 50%);
+        background-image: linear-gradient(135deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     }
     .sidebar-title {
         font-size: 30px !important;
