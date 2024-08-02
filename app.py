@@ -128,7 +128,7 @@ st.sidebar.info(
     "OmniVerse는 Gemini 모델, SDXL을 통한 패션 추천 이미지 생성, 외모 점수 예측, 음악 생성, 이미지 웹툰화, 그리고 이미지 분석 기능을 통합한 시스템입니다."
 )
 
-st.sidebar.title("🤗 이미지 업로드와 다양한 기능을 즐기세요!")
+st.sidebar.subtitle("🤗 이미지 업로드와 다양한 기능을 즐기세요!")
 st.sidebar.markdown(
     """
     1. 외모분석: 이미지를 업로드하고 "외모 분석해줘"를 입력해보세요. AI가 외모를 분석해 새로운 매력을 찾아드립니다.
