@@ -6,3 +6,4 @@ SunoAI
 transformers
 google.generativeai
 opencv-python-headless
+streamlit_lottie
