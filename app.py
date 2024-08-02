@@ -123,7 +123,7 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
-st.sidebar.title("OmniVerse Info")
+st.sidebar.title("🥰 OmniVerse Info")
 st.sidebar.info(
     "OmniVerse는 Gemini 모델, SDXL을 통한 패션 추천 이미지 생성, 외모 점수 예측, 음악 생성, 이미지 웹툰화, 그리고 이미지 분석 기능을 통합한 시스템입니다."
 )
@@ -337,7 +337,7 @@ def main():
 
     # Sidebar content
     with st.sidebar:
-        st.title("Suno Cookie 설정")
+        st.title("😘 Suno Cookie 설정")
         suno_tab = st.radio("탭 선택", ["Suno Cookie 입력", "Suno Cookie 얻는 방법"])
 
         if suno_tab == "Suno Cookie 입력":
@@ -349,7 +349,7 @@ def main():
             """)
             st.markdown("[Suno 웹사이트로 이동하기](https://suno.com/)")
 
-        st.title("개발자 정보")
+        st.title("😎 개발자 정보")
         st.markdown("""
         - **개발자**: 정강빈
         - **버전**: 2.3.0
