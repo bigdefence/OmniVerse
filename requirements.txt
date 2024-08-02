@@ -3,8 +3,5 @@ mediapipe
 tensorflow
 torchvision
 SunoAI
-diffusers
 transformers
-accelerate
-peft
 google.generativeai
