@@ -400,8 +400,8 @@ def main():
             st.markdown("""
             ### Suno API Key를 얻는 방법
             """)
-            st.markdown("<p style='color:white;'>[Cookie 얻는 방법](https://github.com/bigdefence/Music-Face)</p>",unsafe_allow_html=True)
-            st.markdown("<p style='color:white;'>[Suno 웹사이트로 이동하기](https://suno.com/)</p>",unsafe_allow_html=True)
+            st.markdown("<p style='color:white;'>[Cookie 얻는 방법](https://github.com/bigdefence/Music-Face)</p>")
+            st.markdown("<p style='color:white;'>[Suno 웹사이트로 이동하기](https://suno.com/)</p>")
 
         st.sidebar.markdown('<p class="sidebar-subtitle">😎 개발자 정보</p>', unsafe_allow_html=True)
         st.markdown("""
