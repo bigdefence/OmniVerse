@@ -5,4 +5,4 @@ torchvision
 SunoAI
 transformers
 google.generativeai
-opencv
+opencv-python-headless
