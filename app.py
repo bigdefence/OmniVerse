@@ -125,7 +125,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.sidebar.title("🥰 OmniVerse Info")
 st.sidebar.info(
-    "OmniVerse는 Gemini 모델, SDXL을 통한 패션 추천 이미지 생성, 외모 점수 예측, 음악 생성, 이미지 웹툰화, 그리고 이미지 분석 기능을 통합한 시스템입니다."
+    "OmniVerse는 Gemini 모델과 SDXL을 활용하여 패션 추천 이미지 생성, 외모 점수 예측, 음악 생성, 이미지 웹툰화, 그리고 이미지 분석 기능을 통합한 시스템입니다. 이 모든 기능은 Gemini 기술을 기반으로 하여, 보다 정교하고 개인화된 경험을 제공합니다."
 )
 
 st.sidebar.title("🤗 사용 방법")
