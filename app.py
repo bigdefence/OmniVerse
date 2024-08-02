@@ -345,18 +345,29 @@ def webtoon(image, webtoon_model, device='cpu'):
     return output
 def fashion(image, gemini_model,huggingface_api):
     # Gemini API call
-    prompt = """
+    sd_prompt = prompt="""
     Analyze this image in one sentence:
-    1. The person visible in the image
-    2. The overall mood or feeling of the image
-    3. Recommend other fashion items that match the style
-    Provide the output in the following format:
-    "a korean [gender] wearing [recommended style]."
-    Example: "a korean woman wearing a white t-shirt and black pants with a bear on it."
+    1. The person visible in the image, including their gender and any notable features
+    2. Recommend a new outfit style that would suit the person based on the image
+    3. Suggest complementary fashion items or accessories to complete the look
+    Present the output in the format:
+    "A korean [gender] wearing [recommended outfit and accessories]."
+    Example: "A korean woman wearing a white t-shirt and black pants with a bear on it."
+    """
+    style_prompt="""
+    이 이미지에 대해 자세히 분석해주세요. 다음 정보를 포함해주세요:
+    1. 이미지에 보이는 주요 인물의 특징 (성별, 나이대, 체형, 얼굴형 등)
+    2. 인물이 입고 있는 현재의 옷 스타일과 색상
+    3. 인물에게 잘 어울릴 만한 옷 스타일 추천 (예: 캐주얼, 비즈니스 캐주얼, 포멀, 스트릿 패션 등)
+    4. 추천하는 옷 스타일에 대한 구체적인 이유와 설명
+    5. 추천하는 옷 스타일에 어울리는 색상과 패턴
+    6. 이미지의 전체적인 분위기와 어울리는 옷 스타일
+    분석 결과를 한국어로 제공해주세요.
     """
     try:
-        response = gemini_model.generate_content([prompt, image])
+        response = gemini_model.generate_content([sd_prompt, image])
         gemini_description = response.text
+        recommanded_response=gemini_model.generate_content([style_prompt,image])
     except Exception as e:
         print(f"Error in Gemini API call: {e}")
         return None
@@ -375,7 +386,7 @@ def fashion(image, gemini_model,huggingface_api):
 
     # Attempt to open the image
     try:
-        return Image.open(io.BytesIO(image_bytes))
+        return Image.open(io.BytesIO(image_bytes)),recommanded_response.text
     except Exception as e:
         print(f"Error opening image: {e}")
         return None
@@ -446,9 +457,9 @@ def main():
                         response = "Suno API Key를 입력해 주세요."
             elif "패션" in prompt.lower() and 'uploaded_image' in st.session_state:
                 with st.spinner('패션 추천중...'):
-                    fashion_image= fashion(st.session_state.uploaded_image,gemini_model,huggingface_api)
+                    fashion_image,recommanded_response= fashion(st.session_state.uploaded_image,gemini_model,huggingface_api)
                     st.image(fashion_image, caption="패션추천 이미지", use_column_width=True)
-                    response = "사용자에게 어울리는 패션 추천 이미지를 생성했습니다. 위의 이미지를 확인해주세요."
+                    response = "사용자에게 어울리는 패션 추천 이미지를 생성했습니다. 위의 이미지를 확인해주세요.\n"+recommanded_response
             else:
                 with st.spinner('답변 생성 중...'):
                     response = generate_chat_response(prompt, gemini_model)
