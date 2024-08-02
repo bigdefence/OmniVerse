@@ -14,7 +14,7 @@ from model import Generator
 import requests
 import io
 # Configure page
-st.set_page_config(page_title="Multi-Modal Korean ChatBot")
+st.set_page_config(page_title="Multi-Modal Korean ChatBot",page_icon='🤗')
 st.markdown("""
 <style>
     /* Global styles */
