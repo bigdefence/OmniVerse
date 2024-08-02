@@ -1,0 +1,9 @@
+torch
+mediapipe
+tensorflow
+torchvision
+SunoAI
+diffusers
+transformers
+accelerate
+peft
