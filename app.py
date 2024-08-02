@@ -12,6 +12,7 @@ from PIL import Image
 from torchvision.transforms.functional import to_tensor, to_pil_image
 from model import Generator
 import requests
+from streamlit_lottie import st_lottie
 import io
 # Configure page
 st.set_page_config(page_title="Multi-Modal Korean ChatBot",page_icon='🤗')
@@ -123,24 +124,73 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
-st.sidebar.title("🥰 OmniVerse Info")
-st.sidebar.info(
-    "OmniVerse는 Gemini 모델과 SDXL을 활용하여 패션 추천 이미지 생성, 외모 점수 예측, 음악 생성, 이미지 웹툰화, 그리고 이미지 분석 기능을 통합한 시스템입니다. 이 모든 기능은 Gemini 기술을 기반으로 하여, 보다 정교하고 개인화된 경험을 제공합니다."
-)
+def load_lottie_url(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 
-st.sidebar.title("🤗 사용 방법")
-st.sidebar.markdown(
-    """
-    1. Gemini 챗봇: Gemini 챗봇이 다양한 질문에 답변하고 유용한 정보를 제공합니다. 특정 주제에 대한 질문도 가능하니 편하게 이야기해보세요!
-    2. 외모분석: 이미지를 업로드하고 "외모 분석해줘"를 입력해보세요. AI가 외모를 분석해 새로운 매력을 찾아드립니다.
-    3. 웹툰화: "웹툰화 해줘"라고 입력하면, 사진이 웹툰 주인공처럼 변신합니다.
-    4. 이미지 분석: "이미지 분석해줘"를 입력해 사진 속 숨겨진 정보를 확인해보세요.
-    5. 음악 생성: 나만의 음악이 필요하다면, 이미지를 올리고 "음악 만들어줘"라고 해보세요.
-    6. 패션 추천: 나에게 어울리는 스타일이 궁금하다면, 이미지를 올리고 "패션 추천해줘"를 입력해보세요.
-    
-    손쉬운 이미지 업로드로 Gemini 챗봇과 다양한 기능을 즐겨보세요!
-    """
-)
+# Lottie animation
+lottie_url = "https://assets5.lottiefiles.com/packages/lf20_V9t630.json"
+lottie_json = load_lottie_url(lottie_url)
+
+# Custom CSS
+st.markdown("""
+<style>
+    .sidebar .sidebar-content {
+        background-image: linear-gradient(#2e7bcf,#2e7bcf);
+        color: white;
+    }
+    .sidebar-title {
+        font-size: 30px !important;
+        font-weight: bold;
+        text-align: center;
+        background: -webkit-linear-gradient(#eee, #333);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .sidebar-subtitle {
+        font-size: 20px !important;
+        font-weight: bold;
+        text-align: center;
+        color: #ffd700;
+    }
+    .sidebar-text {
+        text-align: justify;
+        color: #f0f0f0;
+    }
+    .feature-title {
+        font-size: 18px !important;
+        font-weight: bold;
+        color: #ffd700;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# Sidebar content
+st.sidebar.markdown('<p class="sidebar-title">🌟 OmniVerse Info</p>', unsafe_allow_html=True)
+
+# Lottie animation
+st_lottie(lottie_json, height=200, key="lottie")
+
+st.sidebar.markdown('<p class="sidebar-subtitle">AI-Powered Creativity Hub</p>', unsafe_allow_html=True)
+st.sidebar.markdown('<p class="sidebar-text">OmniVerse는 Gemini 모델과 SDXL을 활용하여 패션 추천 이미지 생성, 외모 점수 예측, 음악 생성, 이미지 웹툰화, 그리고 이미지 분석 기능을 통합한 시스템입니다. 이 모든 기능은 Gemini 기술을 기반으로 하여, 보다 정교하고 개인화된 경험을 제공합니다.</p>', unsafe_allow_html=True)
+
+st.sidebar.markdown('<p class="sidebar-subtitle">🚀 사용 방법</p>', unsafe_allow_html=True)
+features = [
+    ("💬 Gemini 챗봇", "다양한 질문에 답변하고 유용한 정보를 제공합니다. 특정 주제에 대한 질문도 가능하니 편하게 이야기해보세요!"),
+    ("🔍 외모분석", "이미지를 업로드하고 '외모 분석해줘'를 입력해보세요. AI가 외모를 분석해 새로운 매력을 찾아드립니다."),
+    ("🎨 웹툰화", "'웹툰화 해줘'라고 입력하면, 사진이 웹툰 주인공처럼 변신합니다."),
+    ("📊 이미지 분석", "'이미지 분석해줘'를 입력해 사진 속 숨겨진 정보를 확인해보세요."),
+    ("🎵 음악 생성", "나만의 음악이 필요하다면, 이미지를 올리고 '음악 만들어줘'라고 해보세요."),
+    ("👗 패션 추천", "나에게 어울리는 스타일이 궁금하다면, 이미지를 올리고 '패션 추천해줘'를 입력해보세요.")
+]
+
+for title, description in features:
+    st.sidebar.markdown(f'<p class="feature-title">{title}</p>', unsafe_allow_html=True)
+    st.sidebar.markdown(f'<p class="sidebar-text">{description}</p>', unsafe_allow_html=True)
+
+st.sidebar.markdown('<p class="sidebar-text">손쉬운 이미지 업로드로 Gemini 챗봇과 다양한 기능을 즐겨보세요!</p>', unsafe_allow_html=True)
 
 huggingface_api=os.environ["HUGGINGFACE_API_KEY"]
 GEMINI_MODEL = 'gemini-1.5-flash'
