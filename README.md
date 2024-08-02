@@ -30,7 +30,7 @@ OmniVerse는 다양한 AI 기술을 통합하여 사용자에게 다양한 기�
 - 필요한 패키지들은 requirements.txt 파일을 참조하여 설치하세요.
 1. 저장소 클론:
    ```
-   git clone https://github.com/yourusername/OmniVerse.git
+   git clone https://github.com/bigdefence/OmniVerse.git
    cd OmniVerse
    ```
 
