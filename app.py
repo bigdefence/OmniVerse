@@ -124,6 +124,7 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+
 def load_lottie_url(url: str):
     r = requests.get(url)
     if r.status_code != 200:
@@ -137,32 +138,35 @@ lottie_json = load_lottie_url(lottie_url)
 # Custom CSS
 st.markdown("""
 <style>
-    .sidebar .sidebar-content {
-        background-image: linear-gradient(#2e7bcf,#2e7bcf);
-        color: white;
+    [data-testid=stSidebar] {
+        background-image: linear-gradient(#2e7bcf,#4b9fe1);
     }
     .sidebar-title {
         font-size: 30px !important;
         font-weight: bold;
         text-align: center;
-        background: -webkit-linear-gradient(#eee, #333);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
     .sidebar-subtitle {
         font-size: 20px !important;
         font-weight: bold;
         text-align: center;
         color: #ffd700;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     }
     .sidebar-text {
         text-align: justify;
-        color: #f0f0f0;
+        color: #ffffff;
+        background-color: rgba(0,0,0,0.1);
+        padding: 10px;
+        border-radius: 5px;
     }
     .feature-title {
         font-size: 18px !important;
         font-weight: bold;
         color: #ffd700;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     }
 </style>
 """, unsafe_allow_html=True)
