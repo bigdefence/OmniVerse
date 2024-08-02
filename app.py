@@ -399,8 +399,8 @@ def main():
         else:
             st.markdown("""
             ### Suno API Key를 얻는 방법
-            <!-- Your existing markdown content here -->
             """)
+            st.markdown("[Cookie 얻는 방법](https://github.com/bigdefence/Music-Face)")
             st.markdown("[Suno 웹사이트로 이동하기](https://suno.com/)")
 
         st.title("😎 개발자 정보")
