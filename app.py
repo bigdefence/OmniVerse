@@ -176,8 +176,6 @@ st.sidebar.markdown('<p class="sidebar-title">🌟 OmniVerse Info</p>', unsafe_a
 
 # Lottie animation
 st_lottie(lottie_json, height=200, key="lottie")
-
-st.sidebar.markdown('<p class="sidebar-subtitle">AI-Powered Creativity Hub</p>', unsafe_allow_html=True)
 st.sidebar.markdown('<p class="sidebar-text">OmniVerse는 Gemini 모델과 SDXL을 활용하여 패션 추천 이미지 생성, 외모 점수 예측, 음악 생성, 이미지 웹툰화, 그리고 이미지 분석 기능을 통합한 시스템입니다. 이 모든 기능은 Gemini 기술을 기반으로 하여, 보다 정교하고 개인화된 경험을 제공합니다.</p>', unsafe_allow_html=True)
 
 st.sidebar.markdown('<p class="sidebar-subtitle">🚀 사용 방법</p>', unsafe_allow_html=True)
