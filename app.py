@@ -194,7 +194,6 @@ for title, description in features:
     st.sidebar.markdown(f'<p class="feature-title">{title}</p>', unsafe_allow_html=True)
     st.sidebar.markdown(f'<p class="sidebar-text">{description}</p>', unsafe_allow_html=True)
 
-st.sidebar.markdown('<p class="sidebar-text">손쉬운 이미지 업로드로 Gemini 챗봇과 다양한 기능을 즐겨보세요!</p>', unsafe_allow_html=True)
 
 huggingface_api=os.environ["HUGGINGFACE_API_KEY"]
 GEMINI_MODEL = 'gemini-1.5-flash'
