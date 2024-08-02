@@ -400,14 +400,10 @@ def main():
             st.markdown("""
             ### Suno API Key를 얻는 방법
             """)
-            st.markdown("<p class='sidebar-text'><a href='https://github.com/bigdefence/Music-Face'>Cookie 얻는 방법</a></br><a href='https://suno.com/'>Suno 웹사이트로 이동하기</a></p>",unsafe_allow_html=True)
-            # st.markdown("<p class='sidebar-text'><a href='https://suno.com/'>Suno 웹사이트로 이동하기</a></p>",unsafe_allow_html=True)
+            st.markdown("<p class='sidebar-text'><a href='https://github.com/bigdefence/Music-Face'>1. Cookie 얻는 방법</a></br><a href='https://suno.com/'>2. Suno 웹사이트로 이동하기</a></p>",unsafe_allow_html=True)
 
         st.sidebar.markdown('<p class="sidebar-subtitle">😎 개발자 정보</p>', unsafe_allow_html=True)
-        st.markdown("""<p class='sidebar-text'>
-        - **개발자**: 정강빈
-        - **버전**: 2.3.0</p>
-        """)
+        st.markdown("<p class='sidebar-text'>**개발자**: 정강빈</br>**버전**: 2.3.0</p>",unsafe_allow_html=True)
 
     # Display chat history
     for message in st.session_state.messages:
