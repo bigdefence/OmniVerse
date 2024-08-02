@@ -15,7 +15,7 @@ import requests
 from streamlit_lottie import st_lottie
 import io
 # Configure page
-st.set_page_config(page_title="Multi-Modal Korean ChatBot",page_icon='🤗')
+st.set_page_config(page_title="OmniVerse",page_icon='🤗')
 st.markdown("""
 <style>
     /* Global styles */
