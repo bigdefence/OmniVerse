@@ -373,7 +373,7 @@ def fashion(image, gemini_model,huggingface_api):
         return None
 
     # Hugging Face API call
-    API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+    API_URL = "https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell"
     headers = {"Authorization": f"Bearer {huggingface_api}"}
 
     try:
