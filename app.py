@@ -380,8 +380,8 @@ def fashion(image, gemini_model,huggingface_api):
         payload = {
             "inputs": 'A highly detailed and photorealistic image of ' + gemini_description,
             "negative_prompt": "cartoonish, low quality, blurry, unrealistic, abstract, fantasy",
-            "num_inference_steps": 100,  # 이미지 품질 향상을 위해 단계 수를 늘림
-            "guidance_scale": 7.5  # 원하는 스타일을 강화
+            "num_inference_steps": 200,  # 이미지 품질 향상을 위해 단계 수를 늘림
+            "guidance_scale": 8.0  # 원하는 스타일을 강화
         }
         response = requests.post(API_URL, headers=headers, json=payload)
         response.raise_for_status()  # Raise an exception for bad status codes
