@@ -184,7 +184,6 @@ features = [
     ("🔍 나의 외모점수는?", "이미지를 업로드하고 '외모 분석해줘'를 입력해보세요. AI가 외모를 분석해 새로운 매력을 찾아드립니다."),
     ("🎨 웹툰 속으로", "'웹툰화 해줘'라고 입력하면, 사진이 웹툰 주인공처럼 변신합니다."),
     ("📊 이미지 분석", "'이미지 분석해줘'를 입력해 사진 속 숨겨진 정보를 확인해보세요."),
-    ("🎵 AI 음악 생성", "나만의 음악이 필요하다면, 이미지를 올리고 '음악 만들어줘'라고 해보세요."),
     ("👗 AI 패션 스타일리스트", "나에게 어울리는 스타일이 궁금하다면, 이미지를 올리고 '패션 추천해줘'를 입력해보세요.")
 ]
 
@@ -268,43 +267,6 @@ def process_facescore(image, facescore_model, gemini_model):
     
     return f'### 이미지 분석 결과 ###\n\n{analysis}\n\n### 외모점수 결과(1~5) ###\n\n{score}'
 
-
-def generate_music(image, gemini_model, suno_cookie):
-    st.info('3분정도 소요됩니다!')
-    face = detect_and_crop_face(image)
-    if face is None:
-        return "얼굴이 감지되지 않았습니다. 다른 이미지를 시도해 주세요."
-    
-    prompt = """
-    이 이미지에 대해 자세히 분석해주세요. 다음 정보를 포함해주세요:
-    1. 성별:
-    2. 나이:
-    3. 표정:
-    분석 결과를 한국어로 간략하게 제공해주세요.
-    """
-    
-    response = gemini_model.generate_content([prompt, image])
-    music_path = generate_songs(response.text, suno_cookie)
-
-    # 음악 재생
-    st.audio(str(music_path), format='audio/wav')
-    st.caption("Generated Music")
-    
-    # 음악 파일 삭제
-    if os.path.exists(music_path):
-        os.remove(music_path)
-
-    return "음악이 생성되었습니다. 위의 플레이어에서 음악을 들어보세요."
-
-def generate_songs(result_output, suno_cookie):
-    client = suno.Suno(cookie=suno_cookie)
-    songs = client.generate(
-        prompt=f'{result_output}', is_custom=False, wait_audio=True
-    )
-    
-    # 다운로드할 파일 경로
-    file_path = client.download(song=songs[0])
-    return file_path
 def display_result(score):
     result = round(score, 1)+0.3
     messages = [
@@ -408,16 +370,7 @@ def main():
 
     # Sidebar content
     with st.sidebar:
-        st.sidebar.markdown('<p class="sidebar-subtitle">😘 Suno Cookie 설정</p>', unsafe_allow_html=True)
-        suno_tab = st.radio("탭 선택", ["Suno Cookie 입력", "Suno Cookie 얻는 방법"])
-
-        if suno_tab == "Suno Cookie 입력":
-            suno_cookie = st.text_input("Suno Cookie Key", type="password")
-        else:
-            st.markdown("""
-            ### Suno API Key를 얻는 방법
-            """)
-            st.markdown("<p class='sidebar-text'><a href='https://github.com/bigdefence/Music-Face'>1. Cookie 얻는 방법</a></br><a href='https://suno.com/'>2. Suno 웹사이트로 이동하기</a></p>",unsafe_allow_html=True)
+       
 
         st.sidebar.markdown('<p class="sidebar-subtitle">😎 개발자 정보</p>', unsafe_allow_html=True)
         st.markdown("<p class='sidebar-text'>**개발자**: 정강빈</br>**버전**: 2.3.0</p>",unsafe_allow_html=True)
@@ -455,12 +408,6 @@ def main():
             elif "이미지 분석" in prompt.lower() and 'uploaded_image' in st.session_state:
                 with st.spinner("이미지 분석 중..."):
                     response = analyze_image(st.session_state.uploaded_image, gemini_model)
-            elif "음악" in prompt.lower() and 'uploaded_image' in st.session_state:
-                with st.spinner("음악 생성 중..."):
-                    if suno_cookie:
-                        response = generate_music(st.session_state.uploaded_image, gemini_model, suno_cookie)
-                    else:
-                        response = "Suno API Key를 입력해 주세요."
             elif "패션" in prompt.lower() and 'uploaded_image' in st.session_state:
                 with st.spinner('패션 추천중...'):
                     fashion_image,recommanded_response= fashion(st.session_state.uploaded_image,gemini_model,huggingface_api)
