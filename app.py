@@ -183,20 +183,13 @@ st.sidebar.markdown("### Choose a Feature")
 option = st.sidebar.selectbox(
     "What do you want to do?",
     (
-        "💬 Chat with Gemini",
-        "🔍 Analyze My Appearance",
-        "🎨 Webtoonify Me",
-        "📊 Image Analysis",
-        "👗 Fashion Stylist"
+        "💬 Gemini 챗봇",
+        "🔍 나의 외모점수는?",
+        "🎨 웹툰 속으로",
+        "📊 이미지 분석",
+        "👗 AI 패션 스타일리스트"
     )
 )
-features = [
-    ("💬 Gemini 챗봇", "다양한 질문에 답변하고 유용한 정보를 제공합니다. 특정 주제에 대한 질문도 가능하니 편하게 이야기해보세요!"),
-    ("🔍 나의 외모점수는?", "이미지를 업로드하고 '외모 분석해줘'를 입력해보세요. AI가 외모를 분석해 새로운 매력을 찾아드립니다."),
-    ("🎨 웹툰 속으로", "'웹툰화 해줘'라고 입력하면, 사진이 웹툰 주인공처럼 변신합니다."),
-    ("📊 이미지 분석", "'이미지 분석해줘'를 입력해 사진 속 숨겨진 정보를 확인해보세요."),
-    ("👗 AI 패션 스타일리스트", "나에게 어울리는 스타일이 궁금하다면, 이미지를 올리고 '패션 추천해줘'를 입력해보세요.")
-]    
 if option == "💬 Gemini 챗봇":
     st.sidebar.markdown(f'<p class="feature-title">💬 Gemini 챗봇</p>', unsafe_allow_html=True)
     st.sidebar.markdown(f'<p class="sidebar-text">다양한 질문에 답변하고 유용한 정보를 제공합니다. 특정 주제에 대한 질문도 가능하니 편하게 이야기해보세요!</p>', unsafe_allow_html=True)
