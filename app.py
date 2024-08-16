@@ -432,18 +432,20 @@ def main():
                     response = generate_chat_response(prompt, gemini_model)
                     
             st.markdown(response)
+            st.markdown("""
+            <div style="text-align: center; margin-top: 20px;">
+                <ins class="kakao_ad_area" style="display:none;"
+                     data-ad-unit="DAN-4Gnlwf4Kmq0TkfY9"
+                     data-ad-width="300"
+                     data-ad-height="250"></ins>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Kakao 광고 스크립트 추가
+            st.markdown("""
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+            """, unsafe_allow_html=True)
             st.session_state.messages.append({'role': 'assistant', 'content': response})
-    st.markdown("""
-    <div style="text-align: center; margin-top: 20px;">
-        <ins class="kakao_ad_area" style="display:block;"
-             data-ad-unit="DAN-4Gnlwf4Kmq0TkfY9"
-             data-ad-width="300"
-             data-ad-height="250"></ins>
-        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-    """, unsafe_allow_html=True)
+    
 if __name__ == "__main__":
     main()
