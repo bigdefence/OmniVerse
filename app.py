@@ -433,6 +433,14 @@ def main():
                     
             st.markdown(response)
             st.session_state.messages.append({'role': 'assistant', 'content': response})
+    html_code = '''
+<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit="DAN-4Gnlwf4Kmq0TkfY9"
+data-ad-width="300"
+data-ad-height="250"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+'''
 
+st.components.v1.html(html_code, height=250)
 if __name__ == "__main__":
     main()
