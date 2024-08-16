@@ -434,29 +434,7 @@ def main():
             st.markdown(response)
             st.session_state.messages.append({'role': 'assistant', 'content': response})
     st.markdown("""
-    <style>
-        .ad-container {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .ad-container iframe {
-            border: none;
-            width: 100%;
-            height: 250px;
-            border-radius: 10px;
-        }
-        .ad-text {
-            margin-bottom: 10px;
-            font-size: 16px;
-            color: #333;
-        }
-    </style>
-    <div class="ad-container">
-        <div class="ad-text">이 페이지는 광고를 포함하고 있습니다.</div>
+    <div style="text-align: center; margin-top: 20px;">
         <ins class="kakao_ad_area" style="display:block;"
              data-ad-unit="DAN-4Gnlwf4Kmq0TkfY9"
              data-ad-width="300"
