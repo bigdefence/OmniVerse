@@ -442,5 +442,8 @@ def main():
         <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
     </div>
     """, unsafe_allow_html=True)
+    st.markdown("""
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    """, unsafe_allow_html=True)
 if __name__ == "__main__":
     main()
