@@ -190,57 +190,29 @@ option = st.sidebar.selectbox(
         "👗 Fashion Stylist"
     )
 )
+features = [
+    ("💬 Gemini 챗봇", "다양한 질문에 답변하고 유용한 정보를 제공합니다. 특정 주제에 대한 질문도 가능하니 편하게 이야기해보세요!"),
+    ("🔍 나의 외모점수는?", "이미지를 업로드하고 '외모 분석해줘'를 입력해보세요. AI가 외모를 분석해 새로운 매력을 찾아드립니다."),
+    ("🎨 웹툰 속으로", "'웹툰화 해줘'라고 입력하면, 사진이 웹툰 주인공처럼 변신합니다."),
+    ("📊 이미지 분석", "'이미지 분석해줘'를 입력해 사진 속 숨겨진 정보를 확인해보세요."),
+    ("👗 AI 패션 스타일리스트", "나에게 어울리는 스타일이 궁금하다면, 이미지를 올리고 '패션 추천해줘'를 입력해보세요.")
+]    
+if option == "💬 Gemini 챗봇":
+    st.sidebar.markdown(f'<p class="feature-title">💬 Gemini 챗봇</p>', unsafe_allow_html=True)
+    st.sidebar.markdown(f'<p class="sidebar-text">다양한 질문에 답변하고 유용한 정보를 제공합니다. 특정 주제에 대한 질문도 가능하니 편하게 이야기해보세요!</p>', unsafe_allow_html=True)
+elif option == "🔍 나의 외모점수는?":
+    st.sidebar.markdown(f'<p class="feature-title">🔍 나의 외모점수는?</p>', unsafe_allow_html=True)
+    st.sidebar.markdown(f'<p class="sidebar-text">이미지를 업로드하고 '외모 분석해줘'를 입력해보세요. AI가 외모를 분석해 새로운 매력을 찾아드립니다.</p>', unsafe_allow_html=True)
+elif option == "🎨 웹툰 속으로":
+    st.sidebar.markdown(f'<p class="feature-title">🎨 웹툰 속으로</p>', unsafe_allow_html=True)
+    st.sidebar.markdown(f'<p class="sidebar-text">웹툰화 해줘'라고 입력하면, 사진이 웹툰 주인공처럼 변신합니다.</p>', unsafe_allow_html=True)
+elif option == "📊 이미지 분석":
+    st.sidebar.markdown(f'<p class="feature-title">📊 이미지 분석</p>', unsafe_allow_html=True)
+    st.sidebar.markdown(f'<p class="sidebar-text">이미지 분석해줘'를 입력해 사진 속 숨겨진 정보를 확인해보세요.</p>', unsafe_allow_html=True)
+elif option == "👗 AI 패션 스타일리스트":
+    st.sidebar.markdown(f'<p class="feature-title">👗 AI 패션 스타일리스트</p>', unsafe_allow_html=True)
+    st.sidebar.markdown(f'<p class="sidebar-text">나에게 어울리는 스타일이 궁금하다면, 이미지를 올리고 '패션 추천해줘'를 입력해보세요.</p>', unsafe_allow_html=True)
     
-if option == "💬 Chat with Gemini":
-    st.markdown("### Chat with Gemini")
-    user_input = st.text_input("Ask something to Gemini:")
-    if user_input:
-        with st.spinner("Gemini is thinking..."):
-            response = generate_chat_response(user_input, gemini_model)
-            st.markdown(f"**Gemini:** {response}")
-
-elif option == "🔍 Analyze My Appearance":
-    st.markdown("### Analyze My Appearance")
-    uploaded_file = st.file_uploader("Upload an image of yourself", type=["jpg", "jpeg", "png"])
-    if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
-        with st.spinner("Analyzing your appearance..."):
-            result = process_facescore(image, facescore_model, gemini_model)
-            st.markdown(result)
-
-elif option == "🎨 Webtoonify Me":
-    st.markdown("### Webtoonify Me")
-    uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
-    if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
-        with st.spinner("Creating webtoon version..."):
-            webtoon_image = webtoon(image, webtoon_model)
-            st.image(webtoon_image, caption="Webtoon Version", use_column_width=True)
-
-elif option == "📊 Image Analysis":
-    st.markdown("### Image Analysis")
-    uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
-    if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
-        with st.spinner("Analyzing the image..."):
-            analysis_result = analyze_image(image, gemini_model)
-            st.markdown(analysis_result)
-
-elif option == "👗 Fashion Stylist":
-    st.markdown("### Fashion Stylist")
-    uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
-    if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
-        with st.spinner("Generating fashion recommendation..."):
-            styled_image, fashion_advice = fashion(image, gemini_model, huggingface_api)
-            st.image(styled_image, caption="Styled Image", use_column_width=True)
-            st.markdown(f"**Fashion Advice:** {fashion_advice}")
-
-
 huggingface_api=os.environ["HUGGINGFACE_API_KEY"]
 GEMINI_MODEL = 'gemini-1.5-flash'
 @st.cache_resource
